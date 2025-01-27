@@ -1,0 +1,121 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css">
+    <title>OrganizaEstudy Vite App</title>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body>
+    <header style="background-image: url('/assets/img/pot.jpg');">
+      <div class="container">
+        <nav>
+          <a id="OrganizaEstudy" href="index.html">OrganizaEstudy</a>
+          <ul class="ul">
+            <a href="index.html">Home</a>
+            <a href="index.html">Sobre</a>
+            <a href="index.html">Serviços</a>
+            <a href="index.html">Contatos</a>
+            <div class="close-icon-study" onclick="CloseMenu()"><i class="fa fa-times-circle"></i></div>
+          </ul>
+          <div class="div-menu-mobile-study" onclick="OpenMenu()"><img src="assets/img/menu.png" alt="Menu"></div>
+        </nav>
+      </div>
+      <section class="banner-study">
+        <div class="banner-text">
+          <h1>OrganizaEstudy</h1>
+          <p>Faça a organização dos seus materiais de estudo e conquiste outro patamar no seu desempenho e na sua aprovação.</p>
+          <a href="#About-section" class="Contats" id="animate-contats">Comece Aqui</a>
+        </div>
+      </section>
+      <section class="About" id="About-section">
+        <div class="container02">
+          <div class="about-text">
+            <h3>Colabore com a OrganizaEstudy</h3>
+            <p>Ajudando a transformar a experiência educacional, <br> promovendo a organização e o sucesso dos estudos</p>
+            <a href="https://wa.me/83986874262" class="animate">Entrar em Contato</a>
+          </div>
+          <div class="about-img">
+            <img id="img02" src="assets/img/study-02.png" alt="">
+          </div>
+        </div>
+      </section>
+      <section class="About">
+        <div class="container02">
+          <div class="about-img">
+            <img src="assets/img/study-03.png" alt="">
+          </div>
+          <div class="about-text">
+            <h3>Explore nossas Ferramentas</h3>
+            <p>Confira nossa central de ferramentas práticas como o método Pomodoro e dashboards.</p>
+            <a href="#pomodoro-section">
+              <button class="animate">Acessar Recursos</button>
+            </a>
+          </div>
+        </div>
+      </section>
+      
+      <div class="pomodoro" id="pomodoro-section">
+        <h2>Time</h2>
+        <div id="time-display" class="circle">00:00</div>
+        <!-- Caixa de entrada para adicionar matéria -->
+        <div class="add-subject">
+          <input type="text" id="subject-input" placeholder="Digite a matéria...">
+          <button id="add-subject" class="pomodoro-btn">Adicionar Matéria</button>
+        </div>
+        <div class="controls">
+          <button id="start" class="pomodoro-btn" disabled>Começar</button>
+          <button id="pause" class="pomodoro-btn" disabled>Pausar</button>
+          <button id="reset" class="pomodoro-btn" disabled>Reiniciar</button>
+          <button id="finish" class="pomodoro-btn" disabled>Finalizar</button>
+        </div>
+      </div>
+      
+      <div class="dashboard">
+        <h2 class="titulo">Dashboard</h2>
+        <div class="materia">
+          <div class="box relatorio">Relatório</div>
+          <div class="box materias-recentes">Matérias Recentes</div>
+          <div class="box total-materias">Matérias Totais</div>
+        </div>
+      </div>
+     
+      <footer>
+        <div class="waves">
+          <div class="wave" id="wave1"></div>
+          <div class="wave" id="wave2"></div>
+          <div class="wave" id="wave3"></div>
+          <div class="wave" id="wave4"></div>
+        </div>
+        <ul class="icon_social">
+          <li><a href="#"><ion-icon class="icons" name="logo-facebook"></ion-icon></a></li>
+          <li><a href="#"><ion-icon class="icons" name="logo-twitter"></ion-icon></a></li>
+          <li><a href="#"><ion-icon class="icons" name="logo-linkedin"></ion-icon></a></li>
+          <li><a href="#"><ion-icon class="icons" name="logo-instagram"></ion-icon></a></li>
+        </ul>
+        <ul class="menu">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <p> ©2025 OrganizaEstudy. Todos os direitos reservados.</p>
+      </footer>
+      <script>
+        function scrollToSection(sectionId) {
+          const section = document.getElementById(sectionId);
+          section.scrollIntoView({ behavior: 'smooth' });
+        }
+      </script>
+      <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+      <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+      <script type="module" src="src/main.js"></script>
+  </body>
+</html>

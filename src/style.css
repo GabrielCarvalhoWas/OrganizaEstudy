@@ -1,0 +1,930 @@
+/* ------------------------------
+    RESET GLOBAL - Estilos comuns
+------------------------------ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:,200,,300,400,500,600,700,800,900&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f1f6fc31;
+  overflow-x: hidden;
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+  height: 100vh;
+  margin: 0; 
+  background-color: #eaeaea; 
+}
+/* ------------------------------
+    HEADER
+------------------------------ */
+header {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100%;
+}
+header .container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 30px;
+}
+nav #OrganizaEstudy {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 20px;
+  display: block;
+}
+nav ul {
+  display: flex;
+  align-items: center;
+}
+nav ul a {
+  color: white;
+  margin: 0 15px;
+  text-transform: uppercase;
+  font-size: 20px;
+  display: block;
+  text-decoration: none;
+}
+nav ul a::after {
+  content: "";
+  background-color: #4f9cf9;
+  height: 3px;
+  width: 0%;
+  display: block;
+  margin: 0 auto;
+  transition: 0.3s;
+}
+nav ul a:hover::after {
+  width: 100%;
+}
+/* ------------------------------
+    MENU MOBILE STUDY 
+------------------------------ */
+nav .menu-mobile-study
+{
+  cursor: pointer;
+  font-size: 25px;
+  color: white;
+  display: none;
+}
+nav .classe-icon-study
+{
+  display: none;
+  font-size: 30px;
+  color: white;
+}
+/* ------------------------------
+    HEADER BANNER 
+------------------------------ */
+.banner-study {
+  display: flex;
+  justify-content: center;
+}
+.banner-study .banner-text {
+  max-width: 100%;
+  max-height: 100%;
+  margin: 100px;
+  text-align: center;
+  padding: 0 90px;
+}
+.banner-study .banner-text h1 {
+  font-size: 90px;
+  color: white;
+}
+.banner-study .banner-text p {
+  font-size: 20px;
+  color: #ffffffb7;
+  font-weight: lighter;
+  margin: 30px 70px;
+}
+
+
+/* ------------------------------
+    ABOUT SECTION
+------------------------------ */
+section {
+  padding: 70px 0;
+}
+.About {
+  padding: 70px 0;
+  margin: 5% auto;
+  text-align: left;
+}
+.About .container02 {
+  display: flex;
+  align-items: center;
+}
+.About .about-text {
+  width: 50%;
+  padding: 0 40px;
+}
+.About .about-text h3 {
+  font-size: 56px;
+}
+.About .about-text p {
+  margin: 5px 0 10px 0;
+  color: gray;
+}
+.About .about-img
+{
+  width: 50%;
+}
+.About .about-img img {
+  max-width: 100%;
+  object-fit: contain;
+}
+#img02
+{
+  height: 400px;
+}
+/* ------------------------------
+    MAIN CONTENT 01 (POMODORO)
+------------------------------ */
+.pomodoro {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  margin: 70px auto;  
+  text-align: center;
+  height: auto;
+  background-color: #f0f0f0;
+}
+.pomodoro h2 {
+  margin-bottom: 20px;
+}
+.circle {
+  width: 40vh;
+  height: 40vh;
+  border: 10px solid #4f9cf9;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  font-size: 40px;
+  font-weight: bold;
+  background-color: #f0f9ff;
+  animation: animate 1s ease-in-out infinite;
+}
+.controls button {
+  margin: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.pomodoro-btn {
+  background-color: #4f9cf9;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  animation: animate 1s ease-in-out infinite;
+}
+.pomodoro-btn:hover {
+  background-color: #2469bd;
+  cursor: pointer;
+}
+#subject-input {
+  padding: 8px;
+  font-size: 16px;
+}
+.add-subject {
+  margin-bottom: 20px;
+}
+/* ------------------------------
+    MAIN CONTENT (DASHBOARD)
+------------------------------ */
+.dashboard {
+  margin-top: 20px;
+  width: 80%;
+  height: auto;
+  margin: auto;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.titulo {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.materia {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.box {
+  flex: 1;
+  min-width: 250px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: 10px 0;
+}
+.relatorio {
+  background-color: #c0e3f0;
+}
+.materias-recentes {
+  background-color: #c0e3f0;
+}
+.total-materias {
+  background-color: #c0e3f0;
+}
+
+
+
+
+#dashboard-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+.block {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+}
+.content {
+  margin-top: 10px;
+}
+/* ------------------------------
+    FOOTER
+------------------------------ */
+footer {
+  min-height: 100px;
+  position: relative;
+  width: 100%;
+  background: #3586ff;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+footer .icon_social,
+footer .menu {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  flex-wrap: wrap;
+}
+footer .icon_social li,
+footer .menu li {
+  list-style: none;
+}
+footer .icon_social li a,
+footer .menu li a {
+  font-size: 2em;
+  color: #fff;
+  margin: 0 10px;
+  display: inline-block;
+  transform: 0.5s;
+}
+footer .icon_social li a:hover {
+  transform: translate(-10px);
+}
+footer .menu li a {
+  font-size: 1.2em;
+  color: #fff;
+  margin: 0 10px;
+  display: inline-block;
+  text-decoration: none;
+  opacity: 0.75;
+}
+footer .menu li a:hover {
+  opacity: 1;
+}
+footer p {
+  color: #fff;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  font-size: 1.1em;
+}
+/* Animação das ondas no footer */
+footer .wave {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url('/assets/img/wave.png');
+  background-size: 1000px 100px;
+  animation-timing-function: linear;
+}
+footer .wave#wave1 {
+  z-index: 1000;
+  opacity: 1;
+  bottom: 0;
+  animation: animateWave 5s linear infinite;
+}
+footer .wave#wave2 {
+  z-index: 999;
+  opacity: 0.5;
+  bottom: 10px;
+  animation: animateWave_02 5s linear infinite;
+}
+footer .wave#wave3 {
+  z-index: 1000;
+  opacity: 0.2;
+  bottom: 15px;
+  animation: animateWave 5s linear infinite;
+}
+footer .wave#wave4 {
+  z-index: 999;
+  opacity: 0.7;
+  bottom: 20px;
+  animation: animateWave_02 3s linear infinite;
+}
+/* Animações das ondas */
+@keyframes animateWave {
+  0% {
+    background-position-x: 1000px;
+  }
+  100% {
+    background-position-x: 0px;
+  }
+}
+@keyframes animateWave_02 {
+  0% {
+    background-position-x: 0px;
+  }
+  100% {
+    background-position-x: -1000px;
+  }
+}
+/* ------------------------------
+    BOTÕES (Estilos gerais)
+------------------------------ */
+.Contats,
+.animate {
+  background-color: #4f9cf9;
+  font-size: 30px;
+  color: white;
+  text-decoration: none;
+  padding: 15px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  display: inline-block;
+  transition: 0.1s;
+  border: none;
+}
+.Contats:hover,
+.animate:hover {
+  background-color: #3580bd;
+}
+.Contats#animate-contats,
+.animate {
+  animation: animate 1s ease-in-out infinite;
+}
+@keyframes animate {
+  from {
+    outline: 0px solid #4f9bf98a;
+  }
+  to {
+    outline: 15px solid #4f9bf900;
+  }
+}
+.div-menu-mobile-study {
+  display: none;
+  cursor: pointer;
+  z-index: 1000; 
+}
+/* Ícone de Fechar no Mobile */
+.close-icon-study {
+  display: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+@media (max-width: 830px) {
+  
+  header {
+    height: 100vh; 
+    width: 100%; 
+    background-size: cover;
+    background-position: center; 
+    background-image: url('/assets/img/pot.jpg');
+    background-repeat: no-repeat;
+    margin: 0 auto;
+  }
+    
+  
+  .About .about-text h3
+  {
+    margin-top: 300px;
+    font-size: 35px;
+    align-items: center;
+    text-align: center;  }
+  #img02
+  {
+    flex-direction: column;
+  }
+  .ul {
+    clip-path: circle(0% at 100% 0);
+    transition: clip-path 0.3s ease-in-out;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #3580bd;
+    padding: 2rem;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .div-menu-mobile-study {
+    display: block;
+  }
+  .classe-icon-study {
+    display: block;
+    cursor: pointer;
+    color: white;
+  }
+  nav #OrganizaEstudy
+  {
+    display: none;
+  }
+  .container .banner-study .banner-text
+  {
+    font-size: 50px;
+  }
+  .Contats#animate-contats
+  {
+    font-size: 40px;
+  }
+  .About .about-img img {
+    object-fit: contain;
+    max-width: 100%;
+    height: auto;
+  }
+  .banner-study .banner-text img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+}
+@media screen and (max-width: 865px) {
+  
+  body {
+    display: block;
+    padding: 0;
+    background-color: #f1f6fc31;
+  }
+  .container {
+    flex-direction: column;
+    padding: 0 10px;
+  }
+ 
+  nav {
+    flex-direction: column;
+    padding-top: 15px;
+    text-align: center;
+  }
+  nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  nav ul a {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  nav #OrganizaEstudy {
+    font-size: 18px;
+    margin: 5px 0;
+  }
+  .banner-study .banner-text {
+    padding: 0 30px;
+    margin: 50px 0;
+  }
+  .banner-study .banner-text h1 {
+    font-size: 7vw; 
+  }
+  .banner-study .banner-text p {
+    font-size: 4vw;
+  }
+ 
+  .dashboard {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 20px;
+  }
+  .block {
+    margin: 10px 0;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  .block h2 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  .content {
+    font-size: 1rem;
+    color: #555;
+  }
+  ul li {
+    margin-bottom: 5px;
+    color: #666;
+  }
+  footer {
+    flex-direction: column;
+    padding: 20px;
+    text-align: center;
+  }
+  footer .icon_social,
+  footer .menu {
+    flex-direction: column;
+    align-items: center;
+  }
+  footer .icon_social li,
+  footer .menu li {
+    margin: 5px 0;
+  }
+  footer .icon_social li a,
+  footer .menu li a {
+    font-size: 1.5em;
+  }
+  footer p {
+    font-size: 1em;
+  }
+ 
+  .About .about-img img {
+    max-width: 100%;
+    flex-direction: column-reverse ;
+    height: auto;
+  }
+ 
+  .Contats,
+  .animate {
+    background-color: #4f9cf9;
+    font-size: 30px;
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: inline-block;
+    transition: 0.1s;
+    border: none;
+  }
+  .Contats:hover,
+  .animate:hover {
+    background-color: #3580bd;
+  }
+  .Contats#animate-contats,
+  .animate {
+    animation: animate 1s ease-in-out infinite;
+  }
+  @keyframes animate {
+    from {
+      outline: 0px solid #4f9bf98a;
+    }
+    to {
+      outline: 15px solid #4f9bf900;
+    }
+  }
+}
+/* ------------------------------
+   POMODORO - STYLES
+------------------------------ */
+.pomodoro {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  margin: 70px auto; /* Centraliza e dá margem automática */
+  text-align: center;
+  height: auto;
+  background-color: #f0f0f0;
+}
+.pomodoro h2 {
+  margin-bottom: 20px;
+}
+.circle {
+  width: 40vh;
+  height: 40vh;
+  border: 10px solid #4f9cf9;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  font-size: 40px;
+  font-weight: bold;
+  background-color: #f0f9ff;
+}
+.controls button {
+  margin: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.pomodoro-btn {
+  background-color: #4f9cf9;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+.pomodoro-btn:hover {
+  background-color: #2469bd;
+  cursor: pointer;
+}
+#subject-input {
+  padding: 8px;
+  font-size: 16px;
+}
+.add-subject {
+  margin-bottom: 20px;
+}
+/* ------------------------------
+   DASHBOARD - STYLES
+------------------------------ */
+.dashboard {
+  margin-top: 20px;
+  width: 80%;
+  height: auto;
+  margin: auto;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.titulo {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.materia {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.box {
+  flex: 1;
+  min-width: 250px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: 10px 0;
+}
+.relatorio {
+  background-color: #c0e3f0;
+}
+.materias-recentes {
+  background-color: #c0e3f0;
+}
+.total-materias {
+  background-color: #c0e3f0;
+}
+  
+  /* ------------------------------
+   MEDIA QUERIES
+------------------------------ */
+section {
+  margin-bottom: 20rem;
+  padding:5rem;
+}
+footer {
+  padding: 4rem;
+}
+.dashboard
+{
+  margin-top: 10rem;
+  margin-bottom: 25rem
+}
+@media (max-width: 1200px) {
+  section {
+    margin-bottom: 15rem;
+    padding: 4rem;
+  }
+  footer {
+    padding: 3rem;
+  }
+  .dashboard {
+    margin-top: 8rem;
+    margin-bottom: 20rem;
+  }
+}
+@media (max-width: 768px) {
+  section {
+    margin-bottom: 10rem;
+    padding: 3rem;
+  }
+  footer {
+    padding: 2rem;
+  }
+  .dashboard {
+    margin-top: 6rem;
+    margin-bottom: 55rem;
+  }
+}
+@media (max-width: 480px) {
+  section {
+    margin-bottom: 5rem;
+    padding: 2rem;
+  }
+  footer {
+    padding: 1.5rem;
+  }
+  .dashboard {
+    margin-top: 4rem;
+    margin-bottom: 45rem;
+  }
+}
+/* --------------------
+ MEDIA QUERY POMODORO
+ --------------------- */
+@media (max-width: 1200px) {
+ 
+  .pomodoro {
+    width: 75%; 
+    padding: 20px;
+    margin: 50px auto;
+  }
+  .circle {
+    width: 40vh;
+    height: 40vh;
+    font-size: 35px;
+  }
+  .pomodoro h2 {
+    font-size: 36px; 
+  }
+  .controls button {
+    font-size: 18px;
+  }
+  #subject-input {
+    font-size: 18px;
+    padding: 8px;
+  }
+  .pomodoro-btn {
+    padding: 10px 18px;
+    font-size: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .pomodoro {
+    width: 90%;
+    padding: 15px;
+    margin: 50px auto;
+  }
+  .circle {
+    width: 35vh;
+    height: 35vh;
+    font-size: 32px;
+  }
+  .pomodoro h2 {
+    font-size: 30px;
+  }
+  .controls button {
+    font-size: 16px;
+  }
+  #subject-input {
+    font-size: 16px;
+    padding: 6px;
+  }
+  .pomodoro-btn {
+    padding: 8px 16px;
+    font-size: 18px;
+  }
+}
+@media (max-width: 480px) {
+  .pomodoro {
+    width: 95%;
+    margin: 30px auto;
+  }
+  .circle {
+    width: 30vh;
+    height: 30vh;
+    font-size: 30px;
+  }
+  .pomodoro h2 {
+    font-size: 28px;
+  }
+  .controls button {
+    font-size: 14px;
+  }
+  #subject-input {
+    font-size: 14px;
+    padding: 6px;
+  }
+  .pomodoro-btn {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+}
+/* ----------------------
+   MEDIA QUERY DASHBOARD
+-----------------------*/
+@media (max-width: 1200px) {
+  .dashboard {
+    width: 80%;
+    padding: 20px;
+    margin: 50px auto;
+  }
+  .box {
+    width: 45%; 
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 768px) {
+  
+  .dashboard {
+    width: 90%;
+    padding: 15px;
+    margin: 50px auto;
+  }
+  .materia {
+    flex-direction: column;
+    align-items: center;
+  }
+  .box {
+    width: 80%; 
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 480px) {
+  .dashboard {
+    width: 95%;
+    padding: 10px;
+    margin: 30px auto;
+  }
+  .box {
+    width: 90%;
+    margin-bottom: 20px;
+  }
+}
+
+/* ------------------------------
+   MEDIA QUERIES - FOOTER
+------------------------------ */
+@media (max-width: 1199px) and (min-width: 768px) {
+  footer .icon_social li a,
+  footer .menu li a {
+    font-size: 2em;
+  }
+  footer p {
+    font-size: 1.2em;
+  }
+}
+@media (max-width: 768px) and (min-width: 480px) {
+  footer .icon_social li a,
+  footer .menu li a {
+    font-size: 1.5em;
+  }
+  footer p {
+    font-size: 1em;
+  }
+}
+@media (max-width: 480px) {
+  footer {
+    padding: 20px 30px;
+  }
+  footer .icon_social li a,
+  footer .menu li a {
+    font-size: 1.2em;
+  }
+  footer p {
+    font-size: 0.9em;
+  }
+}
