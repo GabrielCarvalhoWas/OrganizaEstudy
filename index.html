@@ -7,11 +7,6 @@
     <link rel="stylesheet" href="src/00_style.css">
     
     <title>OrganizaEstudy Vite App</title>
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
 </head>
 <body>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
@@ -24,7 +19,6 @@
     <script type="module" src="/src/05_Chart.js"></script>
     <script type="module" src="/src/ui.js"></script>
     <script type="module" src="/src/storage.js"></script>
-
 
     <header style="background-image: url('/assets/img/pot.jpg');">
         <div class="container">
@@ -66,7 +60,7 @@
                 <div class="about-img">
                     <img src="assets/img/study-03.png" alt="">
                 </div>
-                <div class="about-text">
+                <div class ="about-text">
                     <h3>Explore nossas Ferramentas</h3>
                     <p>Confira nossa central de ferramentas práticas como o método Pomodoro e dashboards.</p>
                     <a href="#pomodoro-section">
@@ -80,8 +74,8 @@
             <div id="time-display" class="circle">00:00</div>
             
             <div class="add-subject">
-                <select id="subject-select" >
-                    <option id="oi"class="pomodoro-btn">Selecionar matéria</option>
+                <select id="subject-select">
+                    <option id="oi" class="pomodoro-btn">Selecionar matéria</option>
                 </select>
                 <input type="text" id="subject-input" placeholder="Digite a nova matéria...">
                 <button id="add-subject" class="pomodoro-btn">Adicionar Matéria</button>
@@ -101,7 +95,7 @@
                 <div class="box relatorio">Relatório
                     <div class="box-mais-estudada">3 Materias mais Vista</div>
                     <div class="chart-relatorio-js">
-                        <canvas id="barchart" width="300" height="300"> </canvas>
+                        <canvas id="barchart" width="300" height="300"></canvas>
                     </div>
                 </div>
                 <div class="box materias-recentes">Filtro de Matéria <br>
@@ -111,8 +105,10 @@
                     </div>
                 </div>
                 <div class="box total-materias">
-                    <h3>Matéria por ordem:</h3>
-                    
+                    Matéria por ordem:
+                    <div class="ordered-subjects">
+                        <!-- Matérias ordenadas serão adicionadas aqui -->
+                    </div>
                 </div>
             </div>
         </div>

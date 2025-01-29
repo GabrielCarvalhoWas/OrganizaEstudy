@@ -152,3 +152,27 @@ export class Analytics {
         }));
     }
 }
+
+import { loadSubjects } from './storage.js';
+import { updateChart } from './05_Chart.js'; // Importa a função de atualização do gráfico
+
+function initializeDashboard() {
+    const subjects = loadSubjects();
+    updateDashboardUI(subjects);
+    updateChartWithTopSubjects(subjects); // Atualiza o gráfico com as 3 matérias mais estudadas
+}
+
+function updateDashboardUI(subjects) {
+    // ... (código existente)
+    // Chame a função para atualizar o gráfico
+    updateChartWithTopSubjects(subjects);
+}
+
+function updateChartWithTopSubjects(subjects) {
+    const top3Subjects = subjects
+        .sort((a, b) => b.time - a.time)
+        .slice(0, 3);
+    updateChart(top3Subjects);
+}
+
+export { initializeDashboard };

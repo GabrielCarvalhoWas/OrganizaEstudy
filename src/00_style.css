@@ -837,3 +837,43 @@ footer .wave#wave4 {
 }
 
 
+
+.delete-button {
+  background-color: #ff4d4d; /* Vermelho */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+  background-color: #ff1a1a; /* Vermelho mais escuro */
+}
+
+.ordered-subjects {
+  margin-top: 10px;
+}
+
+.ordered-subject-item {
+  padding: 5px;
+  border-bottom: 1px solid #ccc; /* Linha separadora */
+}
+
+
+.delete-button {
+  background-color: #ff4d4d; /* Vermelho */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+  background-color: #ff1a1a; /* Vermelho mais escuro */
+}

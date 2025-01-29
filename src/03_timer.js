@@ -7,14 +7,14 @@ let currentSubject = null;
 
 const subjects = loadSubjects(); 
 
-//tempo em MM:SS
+// Tempo em MM:SS
 function formatTime(seconds) {
     const minutes = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
 }
 
-// display de tempo
+// Display de tempo
 function updateTimeDisplay() {
     const timeDisplay = document.getElementById('time-display');
     if (timeDisplay) {
@@ -34,9 +34,19 @@ function start() {
     }
 
     currentSubject = subjects.find(subject => subject.name === selectedSubjectName);
-    // O resto do código permanece o mesmo...
+    
+    // Inicia o temporizador
+    if (!isRunning) {
+        isRunning = true; // Marca como rodando
+        timer = setInterval(() => {
+            time++; // Incrementa o tempo
+            updateTimeDisplay(); // Atualiza a exibição do tempo
+            if (currentSubject) {
+                currentSubject.time++; // Incrementa o tempo da matéria atual
+            }
+        }, 1000); // Atualiza a cada segundo
+    }
 }
-
 
 function pause() {
     if (isRunning) {
@@ -47,23 +57,20 @@ function pause() {
     }
 }
 
-
 function reset() {
     clearInterval(timer);
     isRunning = false;
     time = 0;
-    if (currentSubject) {
-        currentSubject.time = 0;
-        saveSubjects(subjects);
-    }
     updateTimeDisplay();
 }
-
 
 function finish() {
     if (currentSubject) {
         alert(`Você estudou ${currentSubject.name} por ${formatTime(currentSubject.time)}.`);
-        reset();
+        // Resetar o tempo da matéria atual
+        currentSubject.time += time; // Adiciona o tempo atual ao tempo total da matéria
+        reset(); // Reseta o temporizador
+        saveSubjects(subjects); // Salva as alterações no Local Storage
     }
 }
 
@@ -79,7 +86,7 @@ function addSubject() {
     const existingSubject = subjects.find(subject => subject.name === subjectName);
 
     if (existingSubject) {
-        existingSubject.views++;
+        existingSubject.time = 0; // Reseta o tempo para a nova sessão
     } else {
         const newSubject = { name: subjectName, time: 0, views: 1 };
         subjects.push(newSubject);
@@ -88,51 +95,8 @@ function addSubject() {
 
     saveSubjects(subjects);
     subjectInput.value = '';
-    updateDashboardUI(subjects);
+    updateDashboardUI(subjects); // Atualiza a UI com as matérias
 }
-
-
-function updateDashboardUI(subjects) {
-    const dashboardContainer = document.querySelector('.materia-caixa');
-    dashboardContainer.innerHTML = '';
-
-    if (subjects.length === 0) {
-        const noSubjectsMessage = document.createElement('div');
-        noSubjectsMessage.textContent = 'Nenhuma matéria adicionada.';
-        dashboardContainer.appendChild(noSubjectsMessage);
-        return;
-    }
-
-    subjects.forEach(subject => {
-        const subjectElement = document.createElement('div');
-        subjectElement.classList.add('subject-item');
-        subjectElement.textContent = `${subject.name}: ${formatTime(subject.time)}`;
-        subjectElement.addEventListener('click', () => selectSubject(subject));
-        dashboardContainer.appendChild(subjectElement);
-    });
-
-    updateMostViewed(subjects);
-}
-
-function selectSubject(subject) {
-    currentSubject = subject;
-    time = subject.time;
-    updateTimeDisplay();
-}
-
-
-function updateMostViewed(subjects) {
-    const mostViewedList = document.getElementById('most-viewed-list');
-    mostViewedList.innerHTML = '';
-
-    const mostViewedSubjects = subjects.sort((a, b) => b.views - a.views).slice(0, 5);
-    mostViewedSubjects.forEach(subject => {
-        const listItem = document.createElement('div');
-        listItem.textContent = `${subject.name} - Visualizações: ${subject.views}`;
-        mostViewedList.appendChild(listItem);
-    });
-}
-
 
 function initializeTimer() {
     const startButton = document.getElementById('start');
@@ -148,12 +112,11 @@ function initializeTimer() {
     if (addSubjectButton) addSubjectButton.addEventListener('click', addSubject);
 }
 
-
 document.addEventListener('DOMContentLoaded', () => {
     initializeTimer();
     updateDashboardUI(subjects);
+    populateSubjectSelect(); // Chama a função para popular o select com as matérias
 });
-
 
 function populateSubjectSelect() {
     const subjectSelect = document.getElementById('subject-select');
@@ -166,9 +129,3 @@ function populateSubjectSelect() {
         subjectSelect.appendChild(option);
     });
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-    populateSubjectSelect();
-    initializeTimer();
-    updateDashboardUI(subjects);
-});

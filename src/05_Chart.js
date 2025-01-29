@@ -1,20 +1,13 @@
+// 05_Chart.js
 
 import { loadSubjects } from './storage.js';
 
-// formatar o tempo (segundos para HH:MM:SS)
-function formatTime(seconds) {
-    const hours = Math.floor(seconds / 3600);
-    const minutes = Math.floor((seconds % 3600) / 60);
-    const secs = seconds % 60;
-    return [hours, minutes, secs]
-        .map(v => v.toString().padStart(2, '0'))
-        .join(':');
-}
+// Inicialização do gráfico
+let chart;
 
-// inicialização do gráfico
 function initializeChart() {
     const ctx = document.getElementById('barchart').getContext('2d');
-    return new Chart(ctx, {
+    chart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: [], 
@@ -44,38 +37,26 @@ function initializeChart() {
     });
 }
 
-// atualizar o gráfico com as 3 matérias mais vistas
-function updateChart(chart, top3Subjects) {
+// Atualizar o gráfico com as 3 matérias mais vistas
+function updateChart(top3Subjects) {
     chart.data.labels = top3Subjects.map(subject => subject.name);
     chart.data.datasets[0].data = top3Subjects.map(subject => subject.time);
     chart.update();
 }
 
- 
 function main() {
-    
+    initializeChart(); // Inicializa o gráfico
     const subjects = loadSubjects();
-
-    
-    const top3Subjects = subjects
-        .sort((a, b) => b.time - a.time) 
-        .slice(0, 3); 
-
-    
-    const chart = initializeChart();
-
-  
-    updateChart(chart, top3Subjects);
-
-    
-    setInterval(() => {
-        const updatedSubjects = loadSubjects();
-        const updatedTop3 = updatedSubjects
-            .sort((a, b) => b.time - a.time)
-            .slice(0, 3);
-        updateChart(chart, updatedTop3);
-    }, 60000); 
+    updateChartWithTopSubjects(subjects); // Atualiza o gráfico com as 3 matérias mais estudadas
 }
 
+function updateChartWithTopSubjects(subjects) {
+    const top3Subjects = subjects
+        .sort((a, b) => b.time - a.time)
+        .slice(0, 3);
+    updateChart(top3Subjects);
+}
 
 main();
+
+export { updateChart };
