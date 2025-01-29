@@ -15,3 +15,23 @@ function ToggleMenu() {
 }
 
 document.querySelector('.div-menu-mobile-study').addEventListener('click', ToggleMenu);
+
+function smoothScroll(event) {
+    event.preventDefault();
+    const targetId = event.currentTarget.getAttribute("href");
+    const targetElement = document.querySelector(targetId);
+    targetElement.scrollIntoView({
+        behavior: 'smooth'
+    });
+}
+document.querySelectorAll('.fade-in-section').forEach((section) => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    });
+    observer.observe(section);
+});

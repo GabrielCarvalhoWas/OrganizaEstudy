@@ -440,20 +440,20 @@ section {
   background-color: #c0e3f0;
 }
 
-/* Estilização do input de filtro */
+
 #filter-subjects {
-  width: 100%; /* Largura total do contêiner */
-  padding: 10px; /* Espaçamento interno */
-  margin: 10px 0; /* Margem superior e inferior */
-  border: 1px solid #ccc; /* Borda cinza clara */
-  border-radius: 5px; /* Bordas arredondadas */
-  font-size: 16px; /* Tamanho da fonte */
+  width: 100%; 
+  padding: 10px;
+  margin: 10px 0; 
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  font-size: 16px;
 }
 #message {
   margin-top: 10px;
-  color: #ff0000; /* Cor da mensagem */
+  color: #ff0000; 
   font-size: 16px;
-  display: none; /* Inicialmente oculto */
+  display: none; 
 }
 
 .subject-item {
@@ -466,17 +466,17 @@ section {
 
 #message {
   margin-top: 10px;
-  color: #ff0000; /* Cor da mensagem */
+  color: #ff0000; 
   font-size: 16px;
-  display: none; /* Inicialmente oculto */
+  display: none; 
 }
-/* Estilização do contêiner de matérias */
+
 .materia-caixa {
-  border: 1px solid #ccc; /* Borda cinza clara */
-  border-radius: 5px; /* Bordas arredondadas */
-  padding: 10px; /* Espaçamento interno */
-  max-height: 200px; /* Altura máxima */
-  overflow-y: auto; /* Rolagem vertical se necessário */
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  padding: 10px; 
+  max-height: 200px; 
+  overflow-y: auto; 
 }
 
 /* ------------------------------
@@ -503,6 +503,19 @@ footer .menu {
   align-items: center;
   margin: 10px 0;
   flex-wrap: wrap;
+}
+
+footer .icon_social li a {
+  font-size: 2em;
+  color: #fff;
+  margin: 0 10px;
+  display: inline-block;
+  transition: color 0.3s; /* Adiciona uma transição suave para a cor */
+  cursor: pointer; /* Muda o cursor para pointer */
+}
+
+footer .icon_social li a:hover {
+  color: #00e1ff; /* Muda a cor ao passar o mouse (você pode escolher a cor que preferir) */
 }
 
 footer .icon_social li,
@@ -743,7 +756,7 @@ footer .wave#wave4 {
 
 
 
-/* Novo arquivo: src/components.css */
+
 .subject-item {
   background: linear-gradient(145deg, #ffffff, #f0f4f8);
   border-radius: 12px;
@@ -830,16 +843,16 @@ footer .wave#wave4 {
 
 
 .total-materias {
-  background-color: #c0e3f0; /* Mesma cor de fundo do filtro de matéria */
-  padding: 20px; /* Adiciona um padding para manter a consistência */
-  border-radius: 10px; /* Bordas arredondadas */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidade */
+  background-color: #c0e3f0;
+  padding: 20px;
+  border-radius: 10px; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
 }
 
 
 
 .delete-button {
-  background-color: #ff4d4d; /* Vermelho */
+  background-color: #ff4d4d;
   color: white;
   border: none;
   border-radius: 5px;
@@ -850,7 +863,7 @@ footer .wave#wave4 {
 }
 
 .delete-button:hover {
-  background-color: #ff1a1a; /* Vermelho mais escuro */
+  background-color: #ff1a1a; 
 }
 
 .ordered-subjects {
@@ -859,12 +872,12 @@ footer .wave#wave4 {
 
 .ordered-subject-item {
   padding: 5px;
-  border-bottom: 1px solid #ccc; /* Linha separadora */
+  border-bottom: 1px solid #ccc;
 }
 
 
 .delete-button {
-  background-color: #ff4d4d; /* Vermelho */
+  background-color: #ff4d4d; 
   color: white;
   border: none;
   border-radius: 5px;
@@ -875,5 +888,29 @@ footer .wave#wave4 {
 }
 
 .delete-button:hover {
-  background-color: #ff1a1a; /* Vermelho mais escuro */
+  background-color: #ff1a1a; 
+}
+
+
+ul 
+{
+    list-style-type: none; 
+    padding: 0; 
+    margin: 0;
+}
+
+html 
+{
+    scroll-behavior: smooth;
+}
+.fade-in-section 
+{
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
 }

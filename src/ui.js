@@ -21,10 +21,10 @@ function updateDashboardUI(subjects) {
         // Botão de excluir
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Excluir';
-        deleteButton.classList.add('delete-button'); // Adiciona uma classe para estilização
+        deleteButton.classList.add('delete-button'); 
         deleteButton.addEventListener('click', () => {
             deleteSubject(subject.name);
-            updateDashboardUI(loadSubjects()); // Atualiza a UI após exclusão
+            updateDashboardUI(loadSubjects()); 
             updateOrderedSubjectsUI(loadSubjects()); // Atualiza a lista ordenada após exclusão
         });
 
@@ -32,12 +32,12 @@ function updateDashboardUI(subjects) {
         dashboardContainer.appendChild(subjectElement);
     });
 
-    updateOrderedSubjectsUI(subjects); // Atualiza a lista ordenada
+    updateOrderedSubjectsUI(subjects); 
 }
 
 function updateOrderedSubjectsUI(subjects) {
     const orderedSubjectsContainer = document.querySelector('.ordered-subjects');
-    orderedSubjectsContainer.innerHTML = ''; // Limpa a lista anterior
+    orderedSubjectsContainer.innerHTML = '';
 
     // Ordena as matérias em ordem alfabética
     subjects.sort((a, b) => a.name.localeCompare(b.name));
@@ -45,9 +45,7 @@ function updateOrderedSubjectsUI(subjects) {
     subjects.forEach(subject => {
         const subjectElement = document.createElement('div');
         subjectElement.classList.add('ordered-subject-item');
-        subjectElement.textContent = subject.name; // Apenas o nome da matéria
-
-        // Não adiciona botão de excluir aqui
+        subjectElement.textContent = subject.name; 
         orderedSubjectsContainer.appendChild(subjectElement);
     });
 }
@@ -58,7 +56,7 @@ function deleteSubject(subjectName) {
     saveSubjects(subjects);
 }
 
-// Função para popular o select com as matérias
+
 function populateSubjectSelect() {
     const subjectSelect = document.getElementById('subject-select');
     const subjects = loadSubjects();
@@ -78,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateDashboardUI(subjects);
 });
 
-// Filtro de matérias
+
 document.getElementById('filter-subjects').addEventListener('input', (event) => {
     const query = event.target.value.toLowerCase();
     const subjects = loadSubjects();

@@ -26,9 +26,8 @@
                 <a id="OrganizaEstudy" href="index.html">OrganizaEstudy</a>
                 <ul class="ul">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html">Sobre</a></li>
-                    <li><a href="index.html">Serviços</a></li>
-                    <li><a href="index.html">Contatos</a></li>
+                    <li><a href="">Serviços</a></li>
+                    <li><a href="">Contatos</a></li>
                 </ul>
                 <div class="div-menu-mobile-study" onclick="ToggleMenu()">
                     <img src="assets/img/menu.png" alt="Menu">
@@ -40,7 +39,7 @@
             <div class="banner-text">
                 <h1>OrganizaEstudy</h1>
                 <p>Faça a organização dos seus materiais de estudo e conquiste outro patamar no seu desempenho e na sua aprovação.</p>
-                <a href="#About-section" class="Contats" id="animate-contats">Comece Aqui</a>
+                <a href="#About-section" class="Contats" id="animate-contats" onclick="smoothScroll(event)">Comece Aqui</a>
             </div>
         </section>
         <section class="About" id="About-section">
@@ -56,7 +55,7 @@
             </div>
         </section>
         <section class="About">
-            <div class="container02">
+            <div class ="container02">
                 <div class="about-img">
                     <img src="assets/img/study-03.png" alt="">
                 </div>
@@ -72,7 +71,6 @@
         <div class="pomodoro" id="pomodoro-section">
             <h2>Time</h2>
             <div id="time-display" class="circle">00:00</div>
-            
             <div class="add-subject">
                 <select id="subject-select">
                     <option id="oi" class="pomodoro-btn">Selecionar matéria</option>
@@ -86,7 +84,7 @@
                 <button id="reset" class="pomodoro-btn">Resetar</button>
                 <button id="finish" class="pomodoro-btn">Finalizar</button>
             </div>
-            <div id="message" class="hidden"></div> <!-- Elemento para a mensagem -->
+            <div id="message" class="hidden"></div>
         </div>
         
         <div class="dashboard">
@@ -101,13 +99,11 @@
                 <div class="box materias-recentes">Filtro de Matéria <br>
                     <input type="text" id="filter-subjects" placeholder="Filtrar matérias...">
                     <div class="materia-caixa">
-                        <!-- Matérias recentes serão adicionadas aqui -->
                     </div>
                 </div>
                 <div class="box total-materias">
                     Matéria por ordem:
                     <div class="ordered-subjects">
-                        <!-- Matérias ordenadas serão adicionadas aqui -->
                     </div>
                 </div>
             </div>
@@ -120,16 +116,15 @@
                 <div class="wave" id="wave4"></div>
             </div>
             <ul class="icon_social">
-                <li><a href="#"><ion-icon class="icons" name="logo-facebook"></ion-icon></a></li>
-                <li><a href="#"><ion-icon class="icons" name="logo-twitter"></ion-icon></a></li>
-                <li><a href="#"><ion-icon class="icons" name="logo-linkedin"></ion-icon></a></li>
-                <li><a href="#"><ion-icon class="icons" name="logo-instagram"></ion-icon></a></li>
+                <li><a href="https://www.facebook.com/profile.php?id=100033772423265"><ion-icon class="icons" name="logo-facebook"></ion-icon></a></li>
+                <li><a href="https://github.com/GabrielCarvalhoWas/OrganizaEstudy"><ion-icon class="icons" name="logo-github"></ion-icon></a></li>
+                <li><a href="https://www.linkedin.com/in/gabriel-pereira-de-carvalho-6710802ab/"><ion-icon class="icons" name="logo-linkedin"></ion-icon></a></li>
+                <li><a href="https://www.instagram.com/gabriel.carvalhc/"><ion-icon class="icons" name="logo-instagram"></ion-icon></a></li>
             </ul>
             <ul class="menu">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="">Services</a></li>
+                <li><a href="">Contact</a></li>
             </ul>
             <p> ©2025 OrganizaEstudy. Todos os direitos reservados.</p>
         </footer>

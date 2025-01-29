@@ -1,8 +1,8 @@
-import { loadSubjects } from '/storage.js'; // Certifique-se de que o caminho está correto
+import { loadSubjects } from '/storage.js'; 
 
 export function updateDashboardUI(subjects) {
-    const dashboardContainer = document.querySelector('.materia-caixa'); // Seleciona o contêiner onde as matérias serão exibidas
-    dashboardContainer.innerHTML = ''; // Limpa o conteúdo anterior
+    const dashboardContainer = document.querySelector('.materia-caixa'); 
+    dashboardContainer.innerHTML = '';
 
     // Verifica se há matérias para exibir
     if (subjects.length === 0) {
@@ -29,7 +29,7 @@ function formatTime(seconds) {
 }
 
 
-// dashboard.js - Melhorado com programação funcional
+
 export class Dashboard {
     constructor() {
         this.subjects = [];
@@ -93,7 +93,7 @@ export class Dashboard {
             return element;
         });
 
-        // Limpa e adiciona os novos elementos
+
         container.innerHTML = '';
         container.append(...subjectElements);
     }
@@ -119,7 +119,7 @@ export class Dashboard {
     }
 }
 
-// Novo módulo para análise de dados
+
 export class Analytics {
     static getMostStudiedSubjects(subjects, limit = 5) {
         return [...subjects]
@@ -154,17 +154,16 @@ export class Analytics {
 }
 
 import { loadSubjects } from './storage.js';
-import { updateChart } from './05_Chart.js'; // Importa a função de atualização do gráfico
+import { updateChart } from './05_Chart.js'; 
 
 function initializeDashboard() {
     const subjects = loadSubjects();
     updateDashboardUI(subjects);
-    updateChartWithTopSubjects(subjects); // Atualiza o gráfico com as 3 matérias mais estudadas
+    updateChartWithTopSubjects(subjects);
 }
 
 function updateDashboardUI(subjects) {
-    // ... (código existente)
-    // Chame a função para atualizar o gráfico
+
     updateChartWithTopSubjects(subjects);
 }
 

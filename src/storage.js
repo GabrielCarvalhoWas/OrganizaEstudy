@@ -1,4 +1,3 @@
-// storage.js
 export function saveSubjects(subjects) {
     localStorage.setItem('subjects', JSON.stringify(subjects));
 }

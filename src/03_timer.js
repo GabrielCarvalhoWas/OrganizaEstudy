@@ -14,7 +14,7 @@ function formatTime(seconds) {
     return `${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
 }
 
-// Display de tempo
+
 function updateTimeDisplay() {
     const timeDisplay = document.getElementById('time-display');
     if (timeDisplay) {
@@ -35,16 +35,15 @@ function start() {
 
     currentSubject = subjects.find(subject => subject.name === selectedSubjectName);
     
-    // Inicia o temporizador
     if (!isRunning) {
-        isRunning = true; // Marca como rodando
+        isRunning = true; 
         timer = setInterval(() => {
-            time++; // Incrementa o tempo
-            updateTimeDisplay(); // Atualiza a exibição do tempo
+            time++; 
+            updateTimeDisplay(); 
             if (currentSubject) {
-                currentSubject.time++; // Incrementa o tempo da matéria atual
+                currentSubject.time++; 
             }
-        }, 1000); // Atualiza a cada segundo
+        }, 1000); 
     }
 }
 
@@ -67,9 +66,8 @@ function reset() {
 function finish() {
     if (currentSubject) {
         alert(`Você estudou ${currentSubject.name} por ${formatTime(currentSubject.time)}.`);
-        // Resetar o tempo da matéria atual
-        currentSubject.time += time; // Adiciona o tempo atual ao tempo total da matéria
-        reset(); // Reseta o temporizador
+        currentSubject.time += time; 
+        reset();
         saveSubjects(subjects); // Salva as alterações no Local Storage
     }
 }
@@ -86,7 +84,7 @@ function addSubject() {
     const existingSubject = subjects.find(subject => subject.name === subjectName);
 
     if (existingSubject) {
-        existingSubject.time = 0; // Reseta o tempo para a nova sessão
+        existingSubject.time = 0;
     } else {
         const newSubject = { name: subjectName, time: 0, views: 1 };
         subjects.push(newSubject);
@@ -95,7 +93,7 @@ function addSubject() {
 
     saveSubjects(subjects);
     subjectInput.value = '';
-    updateDashboardUI(subjects); // Atualiza a UI com as matérias
+    updateDashboardUI(subjects); 
 }
 
 function initializeTimer() {
@@ -115,7 +113,7 @@ function initializeTimer() {
 document.addEventListener('DOMContentLoaded', () => {
     initializeTimer();
     updateDashboardUI(subjects);
-    populateSubjectSelect(); // Chama a função para popular o select com as matérias
+    populateSubjectSelect(); 
 });
 
 function populateSubjectSelect() {

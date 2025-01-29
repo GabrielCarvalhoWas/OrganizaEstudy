@@ -1,8 +1,6 @@
-// 05_Chart.js
-
 import { loadSubjects } from './storage.js';
 
-// Inicialização do gráfico
+
 let chart;
 
 function initializeChart() {
@@ -37,7 +35,7 @@ function initializeChart() {
     });
 }
 
-// Atualizar o gráfico com as 3 matérias mais vistas
+
 function updateChart(top3Subjects) {
     chart.data.labels = top3Subjects.map(subject => subject.name);
     chart.data.datasets[0].data = top3Subjects.map(subject => subject.time);
@@ -45,9 +43,9 @@ function updateChart(top3Subjects) {
 }
 
 function main() {
-    initializeChart(); // Inicializa o gráfico
+    initializeChart(); 
     const subjects = loadSubjects();
-    updateChartWithTopSubjects(subjects); // Atualiza o gráfico com as 3 matérias mais estudadas
+    updateChartWithTopSubjects(subjects); 
 }
 
 function updateChartWithTopSubjects(subjects) {
