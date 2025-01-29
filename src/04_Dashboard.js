@@ -1,10 +1,12 @@
-import { loadSubjects } from '/storage.js'; 
+import { loadSubjects } from './storage.js';
+import { updateChart } from './05_Chart.js';
+
 
 export function updateDashboardUI(subjects) {
-    const dashboardContainer = document.querySelector('.materia-caixa'); 
+    const dashboardContainer = document.querySelector('.materia-caixa');
     dashboardContainer.innerHTML = '';
 
-    // Verifica se há matérias para exibir
+
     if (subjects.length === 0) {
         const noSubjectsMessage = document.createElement('div');
         noSubjectsMessage.textContent = 'Nenhuma matéria adicionada.';
@@ -12,12 +14,12 @@ export function updateDashboardUI(subjects) {
         return;
     }
 
-    // Usando Array.map() para criar elementos dinâmicos
+
     subjects.map(subject => {
         const subjectElement = document.createElement('div');
-        subjectElement.classList.add('subject-item'); // Adiciona uma classe para estilização, se necessário
-        subjectElement.textContent = `${subject.name}: ${formatTime(subject.time)}`; // Formata o tempo da matéria
-        dashboardContainer.appendChild(subjectElement); // Adiciona o elemento ao contêiner
+        subjectElement.classList.add('subject-item');
+        subjectElement.textContent = `${subject.name}: ${formatTime(subject.time)}`;
+        dashboardContainer.appendChild(subjectElement);
     });
 }
 
@@ -71,9 +73,9 @@ export class Dashboard {
         const subjectElements = subjects.map(subject => {
             const element = document.createElement('div');
             element.className = 'subject-item animate__animated animate__fadeIn';
-            
+
             const stats = this.calculateSubjectStats(subject);
-            
+
             element.innerHTML = `
                 <div class="subject-header">
                     <h3>${subject.name}</h3>
@@ -89,7 +91,7 @@ export class Dashboard {
                     </button>
                 </div>
             `;
-            
+
             return element;
         });
 
@@ -102,8 +104,8 @@ export class Dashboard {
         const sessions = subject.sessions || [];
         return {
             sessions: sessions.length,
-            averageTime: sessions.length ? 
-                Math.round(sessions.reduce((acc, time) => acc + time, 0) / sessions.length / 60) : 
+            averageTime: sessions.length ?
+                Math.round(sessions.reduce((acc, time) => acc + time, 0) / sessions.length / 60) :
                 0
         };
     }
@@ -112,7 +114,7 @@ export class Dashboard {
         const hours = Math.floor(seconds / 3600);
         const minutes = Math.floor((seconds % 3600) / 60);
         const secs = seconds % 60;
-        
+
         return [hours, minutes, secs]
             .map(v => v.toString().padStart(2, '0'))
             .join(':');
@@ -152,9 +154,7 @@ export class Analytics {
         }));
     }
 }
-
-import { loadSubjects } from './storage.js';
-import { updateChart } from './05_Chart.js'; 
+export { initializeDashboard };
 
 function initializeDashboard() {
     const subjects = loadSubjects();
@@ -174,4 +174,3 @@ function updateChartWithTopSubjects(subjects) {
     updateChart(top3Subjects);
 }
 
-export { initializeDashboard };

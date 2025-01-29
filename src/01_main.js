@@ -1,5 +1,5 @@
-import { initializeTimer } from '/03_temporizador.js';
-import { initializeDashboard } from '/04_dashboard.js';
+import { initializeTimer } from './03_timer.js';
+import { initializeDashboard } from './04_Dashboard.js';
 
 function initializeApp() {
     initializeTimer();
