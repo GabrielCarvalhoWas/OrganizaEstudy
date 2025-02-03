@@ -1,37 +1,38 @@
-function ToggleMenu() {
-    const navLinks = document.querySelector('.ul');
-    const menuIcon = document.getElementById('menu-icon');
-    const closeIcon = document.getElementById('close-icon');
+function AlternarMenu() {
+    const linksNav = document.querySelector('.ul');
+    const iconeMenu = document.getElementById('menu-icon');
+    const iconeFechar = document.getElementById('close-icon');
 
-    if (navLinks.classList.contains('active')) {
-        navLinks.classList.remove('active');
-        menuIcon.style.display = 'block';
-        closeIcon.style.display = 'none';
+    if (linksNav.classList.contains('active')) {
+        linksNav.classList.remove('active');
+        iconeMenu.style.display = 'block';
+        iconeFechar.style.display = 'none';
     } else {
-        navLinks.classList.add('active');
-        menuIcon.style.display = 'none';
-        closeIcon.style.display = 'block';
+        linksNav.classList.add('active');
+        iconeMenu.style.display = 'none';
+        iconeFechar.style.display = 'block';
     }
 }
 
-document.querySelector('.div-menu-mobile-study').addEventListener('click', ToggleMenu);
+document.querySelector('.div-menu-mobile-study').addEventListener('click', AlternarMenu);
 
-function smoothScroll(event) {
+function rolagemSuave(event) {
     event.preventDefault();
-    const targetId = event.currentTarget.getAttribute("href");
-    const targetElement = document.querySelector(targetId);
-    targetElement.scrollIntoView({
+    const idAlvo = event.currentTarget.getAttribute("href");
+    const elementoAlvo = document.querySelector(idAlvo);
+    elementoAlvo.scrollIntoView({
         behavior: 'smooth'
     });
 }
-document.querySelectorAll('.fade-in-section').forEach((section) => {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
+
+document.querySelectorAll('.fade-in-section').forEach((secao) => {
+    const observador = new IntersectionObserver((entradas) => {
+        entradas.forEach(entrada => {
+            if (entrada.isIntersecting) {
+                entrada.target.classList.add('is-visible');
+                observador.unobserve(entrada.target);
             }
         });
     });
-    observer.observe(section);
+    observador.observe(secao);
 });

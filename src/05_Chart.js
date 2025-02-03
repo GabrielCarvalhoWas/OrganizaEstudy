@@ -1,11 +1,10 @@
-import { loadSubjects } from './storage.js';
+import { carregarMaterias } from './06_LocalStorage.js';
 
+let grafico;
 
-let chart;
-
-function initializeChart() {
+function inicializarGrafico() {
     const ctx = document.getElementById('barchart').getContext('2d');
-    chart = new Chart(ctx, {
+    grafico = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: [], 
@@ -35,26 +34,25 @@ function initializeChart() {
     });
 }
 
-
-function updateChart(top3Subjects) {
-    chart.data.labels = top3Subjects.map(subject => subject.name);
-    chart.data.datasets[0].data = top3Subjects.map(subject => subject.time);
-    chart.update();
+function atualizarGrafico(top3Materias) {
+    grafico.data.labels = top3Materias.map(materia => materia.name);
+    grafico.data.datasets[0].data = top3Materias.map(materia => materia.time);
+    grafico.update();
 }
 
-function main() {
-    initializeChart(); 
-    const subjects = loadSubjects();
-    updateChartWithTopSubjects(subjects); 
+function principal() {
+    inicializarGrafico(); 
+    const materias = carregarMaterias();
+    atualizarGraficoComTopMaterias(materias); 
 }
 
-function updateChartWithTopSubjects(subjects) {
-    const top3Subjects = subjects
+function atualizarGraficoComTopMaterias(materias) {
+    const top3Materias = materias
         .sort((a, b) => b.time - a.time)
         .slice(0, 3);
-    updateChart(top3Subjects);
+    atualizarGrafico(top3Materias);
 }
 
-main();
+principal();
 
-export { updateChart };
+export { atualizarGrafico };

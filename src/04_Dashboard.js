@@ -1,49 +1,43 @@
-import { loadSubjects } from './storage.js';
-import { updateChart } from './05_Chart.js';
+import { carregarMaterias } from './06_LocalStorage.js';
+import { atualizarGrafico } from './05_Chart.js';
 
+export function atualizarUIDoDashboard(materias) {
+    const containerDashboard = document.querySelector('.materia-caixa');
+    containerDashboard.innerHTML = '';
 
-export function updateDashboardUI(subjects) {
-    const dashboardContainer = document.querySelector('.materia-caixa');
-    dashboardContainer.innerHTML = '';
-
-
-    if (subjects.length === 0) {
-        const noSubjectsMessage = document.createElement('div');
-        noSubjectsMessage.textContent = 'Nenhuma matéria adicionada.';
-        dashboardContainer.appendChild(noSubjectsMessage);
+    if (materias.length === 0) {
+        const mensagemSemMaterias = document.createElement('div');
+        mensagemSemMaterias.textContent = 'Nenhuma matéria adicionada.';
+        containerDashboard.appendChild(mensagemSemMaterias);
         return;
     }
 
-
-    subjects.map(subject => {
-        const subjectElement = document.createElement('div');
-        subjectElement.classList.add('subject-item');
-        subjectElement.textContent = `${subject.name}: ${formatTime(subject.time)}`;
-        dashboardContainer.appendChild(subjectElement);
+    materias.map(materia => {
+        const elementoMateria = document.createElement('div');
+        elementoMateria.classList.add('subject-item');
+        elementoMateria.textContent = `${materia.name}: ${formatarTempo(materia.time)}`;
+        containerDashboard.appendChild(elementoMateria);
     });
 }
 
-
-function formatTime(seconds) {
-    const minutes = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+function formatarTempo(segundos) {
+    const minutos = Math.floor(segundos / 60);
+    const secs = segundos % 60;
+    return `${String(minutos).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
 }
-
-
 
 export class Dashboard {
     constructor() {
-        this.subjects = [];
-        this.chartInstance = null;
-        this.filterInput = document.getElementById('filter-subjects');
-        this.initializeEventListeners();
+        this.materias = [];
+        this.graficoInstancia = null;
+        this.entradaFiltro = document.getElementById('filter-subjects');
+        this.inicializarTratadoresDeEventos();
     }
 
-    initializeEventListeners() {
+    inicializarTratadoresDeEventos() {
         // Tratamento de eventos com debounce para melhor performance
-        this.filterInput?.addEventListener('input', this.debounce(() => {
-            this.filterSubjects(this.filterInput.value);
+        this.entradaFiltro?.addEventListener('input', this.debounce(() => {
+            this.filtrarMaterias(this.entradaFiltro.value);
         }, 300));
     }
 
@@ -59,118 +53,115 @@ export class Dashboard {
         };
     }
 
-    filterSubjects(query) {
-        const filteredSubjects = this.subjects
-            .filter(subject => subject.name.toLowerCase().includes(query.toLowerCase()));
-        this.updateUI(filteredSubjects);
+    filtrarMaterias(query) {
+        const materiasFiltradas = this.materias
+            .filter(materia => materia.name.toLowerCase().includes(query.toLowerCase()));
+        this.atualizarUI(materiasFiltradas);
     }
 
-    updateUI(subjects) {
+    atualizarUI(materias) {
         const container = document.querySelector('.materia-caixa');
         if (!container) return;
 
         // Usando map para criar elementos
-        const subjectElements = subjects.map(subject => {
-            const element = document.createElement('div');
-            element.className = 'subject-item animate__animated animate__fadeIn';
+        const elementosMaterias = materias.map(materia => {
+            const elemento = document.createElement('div');
+            elemento.className = 'subject-item animate__animated animate__fadeIn';
 
-            const stats = this.calculateSubjectStats(subject);
+            const estatisticas = this.calcularEstatisticasMateria(materia);
 
-            element.innerHTML = `
+            elemento.innerHTML = `
                 <div class="subject-header">
-                    <h3>${subject.name}</h3>
-                    <span class="subject-time">${this.formatTime(subject.time)}</span>
+                    <h3>${materia.name}</h3>
+                    <span class="subject-time">${this.formatarTempo(materia.time)}</span>
                 </div>
                 <div class="subject-stats">
-                    <span>Sessões: ${stats.sessions}</span>
-                    <span>Média: ${stats.averageTime}min</span>
+                    <span>Sessões: ${estatisticas.sessao}</span>
+                    <span>Média: ${estatisticas.tempoMedio}min</span>
                 </div>
                 <div class="subject-actions">
-                    <button class="start-btn" data-subject="${subject.name}">
+                    <button class="start-btn" data-subject="${materia.name}">
                         <i class="fas fa-play"></i> Iniciar
                     </button>
                 </div>
             `;
 
-            return element;
+            return elemento;
         });
 
-
         container.innerHTML = '';
-        container.append(...subjectElements);
+        container.append(...elementosMaterias);
     }
 
-    calculateSubjectStats(subject) {
-        const sessions = subject.sessions || [];
+    calcularEstatisticasMateria(materia) {
+        const sessoes = materia.sessions || [];
         return {
-            sessions: sessions.length,
-            averageTime: sessions.length ?
-                Math.round(sessions.reduce((acc, time) => acc + time, 0) / sessions.length / 60) :
+            sessoes: sessoes.length,
+            tempoMedio: sessoes.length ?
+                Math.round(sessoes.reduce((acc, tempo) => acc + tempo, 0) / sessoes.length / 60) :
                 0
         };
     }
 
-    formatTime(seconds) {
-        const hours = Math.floor(seconds / 3600);
-        const minutes = Math.floor((seconds % 3600) / 60);
-        const secs = seconds % 60;
+    formatarTempo(segundos) {
+        const horas = Math.floor(segundos / 3600);
+        const minutos = Math.floor((segundos % 3600) / 60);
+        const secs = segundos % 60;
 
-        return [hours, minutes, secs]
+        return [horas, minutos, secs]
             .map(v => v.toString().padStart(2, '0'))
             .join(':');
     }
 }
 
-
-export class Analytics {
-    static getMostStudiedSubjects(subjects, limit = 5) {
-        return [...subjects]
+export class Analitica {
+    static obterMateriasMaisEstudadas(materias, limite = 5) {
+        return [...materias]
             .sort((a, b) => b.time - a.time)
-            .slice(0, limit)
-            .map(subject => ({
-                name: subject.name,
-                time: subject.time,
-                percentage: (subject.time / this.getTotalStudyTime(subjects) * 100).toFixed(1)
+            .slice(0, limite)
+            .map(materia => ({
+                name: materia.name,
+                time: materia.time,
+                percentage: (materia.time / this.obterTempoTotalDeEstudo(materias) * 100).toFixed(1)
             }));
     }
 
-    static getTotalStudyTime(subjects) {
-        return subjects.reduce((total, subject) => total + subject.time, 0);
+    static obterTempoTotalDeEstudo(materias) {
+        return materias.reduce((total, materia) => total + materia.time, 0);
     }
 
-    static getWeeklyProgress(subjects) {
-        const weekDays = Array.from({ length: 7 }, (_, i) => {
+    static obterProgressoSemanal(materias) {
+        const diasDaSemana = Array.from({ length: 7 }, (_, i) => {
             const d = new Date();
             d.setDate(d.getDate() - i);
             return d.toISOString().split('T')[0];
         });
 
-        return weekDays.map(day => ({
-            date: day,
-            total: subjects.reduce((acc, subject) => {
-                const dayStudy = subject.sessions?.filter(s => s.date === day) || [];
-                return acc + dayStudy.reduce((t, s) => t + s.time, 0);
+        return diasDaSemana.map(dia => ({
+            date: dia,
+            total: materias.reduce((acc, materia) => {
+                const estudoDoDia = materia.sessions?.filter(s => s.date === dia) || [];
+                return acc + estudoDoDia.reduce((t, s) => t + s.time, 0);
             }, 0)
         }));
     }
 }
-export { initializeDashboard };
 
-function initializeDashboard() {
-    const subjects = loadSubjects();
-    updateDashboardUI(subjects);
-    updateChartWithTopSubjects(subjects);
+export { inicializarDashboard };
+
+function inicializarDashboard() {
+    const materias = carregarMaterias();
+    atualizarUIDoDashboard(materias);
+    atualizarGraficoComTopMaterias(materias);
 }
 
-function updateDashboardUI(subjects) {
-
-    updateChartWithTopSubjects(subjects);
+function atualizarUIDoDashboard(materias) {
+    atualizarGraficoComTopMaterias(materias);
 }
 
-function updateChartWithTopSubjects(subjects) {
-    const top3Subjects = subjects
+function atualizarGraficoComTopMaterias(materias) {
+    const top3Materias = materias
         .sort((a, b) => b.time - a.time)
         .slice(0, 3);
-    updateChart(top3Subjects);
+    atualizarGrafico(top3Materias);
 }
-

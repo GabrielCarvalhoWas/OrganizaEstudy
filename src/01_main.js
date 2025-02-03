@@ -1,9 +1,9 @@
-import { initializeTimer } from './03_timer.js';
-import { initializeDashboard } from './04_Dashboard.js';
+import { inicializarTemporizador } from './03_Temporizador.js';
+import { inicializarDashboard } from './04_Dashboard.js';
 
-function initializeApp() {
-    initializeTimer();
-    initializeDashboard();
+function inicializarApp() {
+    inicializarTemporizador();
+    inicializarDashboard();
 }
 
-document.addEventListener('DOMContentLoaded', initializeApp);
+document.addEventListener('DOMContentLoaded', inicializarApp);
